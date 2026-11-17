@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Visual Qur'an Atlas — Surah Comprehension Check</title>
+  <meta name="description" content="A calm, self-paced Surah comprehension check for readers of The Visual Qur'an Atlas by Hur Studio Press.">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data/surahs.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand-kicker">HUR STUDIO PRESS • THE VISUAL QUR'AN ATLAS</div>
+      <h1 class="site-title">Surah Comprehension Check</h1>
+      <p class="site-motto">READ. REFLECT. RETURN.</p>
+    </header>
+
+    <main id="main-content" class="main-content">
+      <!-- Screen 1: Surah Selection -->
+      <section id="screen-home" class="screen active" aria-labelledby="home-heading">
+        <div class="intro-card">
+          <h2 id="home-heading" class="section-heading">Choose a Surah</h2>
+          <p class="section-subtitle">
+            Each session draws <strong>5 randomized questions</strong> from the Atlas to help you check your understanding—across
+            <span class="label-pill label-quran">Quran</span>,
+            <span class="label-pill label-hadith">Hadith</span>,
+            <span class="label-pill label-tafsir">Tafsir</span>, and
+            <span class="label-pill label-reflection">Reflection</span>.
+          </p>
+
+          <div class="search-row">
+            <label for="surah-search" class="sr-only">Search surah by number or name</label>
+            <input
+              id="surah-search"
+              class="search-input"
+              type="search"
+              placeholder="Filter by Surah number or name (e.g. 1, Fatihah, Asr)…"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <div id="surah-grid" class="surah-grid" role="list"></div>
+        <p id="surah-empty" class="empty-state" hidden>No matching Surahs found.</p>
+      </section>
+
+      <!-- Screen 2: Active Quiz -->
+      <section id="screen-quiz" class="screen" aria-labelledby="quiz-surah-title" hidden>
+        <div class="quiz-topbar">
+          <button id="btn-back-home" type="button" class="btn btn-ghost">
+            ← All Surahs
+          </button>
+          <div class="quiz-meta">
+            <span id="quiz-surah-title" class="quiz-surah-name"></span>
+            <span id="quiz-progress-text" class="quiz-progress-text">Question 1 of 5</span>
+          </div>
+        </div>
+
+        <div class="progress-track" aria-hidden="true">
+          <div id="quiz-progress-bar" class="progress-fill" style="width: 0%"></div>
+        </div>
+
+        <article class="question-card" aria-live="polite">
+          <div class="question-header">
+            <span id="question-label" class="label-pill"></span>
+            <span id="question-source-ref" class="source-ref"></span>
+          </div>
+
+          <h2 id="question-text" class="question-text"></h2>
+
+          <div id="options-list" class="options-list" role="group" aria-label="Answer choices"></div>
+
+          <div id="feedback-box" class="feedback-box" hidden>
+            <div id="feedback-status" class="feedback-status"></div>
+            <p id="feedback-explanation" class="feedback-explanation"></p>
+          </div>
+
+          <div class="question-actions">
+            <button id="btn-next" type="button" class="btn btn-primary" hidden>
+              Next Question →
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <!-- Screen 3: Results & Incorrect Answer Review -->
+      <section id="screen-results" class="screen" aria-labelledby="results-heading" hidden>
+        <div class="results-card">
+          <div id="results-surah-kicker" class="results-kicker"></div>
+          <h2 id="results-heading" class="results-title">Comprehension Summary</h2>
+
+          <div class="score-ring-wrap">
+            <div class="score-badge">
+              <span id="score-value" class="score-value">0 / 5</span>
+              <span id="score-percent" class="score-percent">0%</span>
+            </div>
+          </div>
+
+          <p id="results-message" class="results-message"></p>
+
+          <div class="results-actions">
+            <button id="btn-retake" type="button" class="btn btn-primary">
+              Retake Surah (New Order)
+            </button>
+            <button id="btn-choose-another" type="button" class="btn btn-secondary">
+              Choose Another Surah
+            </button>
+          </div>
+        </div>
+
+        <div id="review-section" class="review-section" hidden>
+          <h3 class="review-heading">Review of Incorrect Answers</h3>
+          <p class="review-subtitle">
+            Revisit these points in your Atlas to strengthen your understanding.
+          </p>
+          <div id="review-list" class="review-list"></div>
+        </div>
+
+        <div id="perfect-section" class="perfect-card" hidden>
+          <p>
+            <strong>Masha'Allah — 5 out of 5.</strong> You answered every question accurately.
+            Return to the Surah's <em>Tadabbur</em> prompts in your Atlas for deeper personal reflection.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>The Visual Qur'an Atlas Companion • Open Study Tool • No accounts or tracking</p>
+    </footer>
+  </div>
+</body>
+</html>
